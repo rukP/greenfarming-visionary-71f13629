@@ -1,11 +1,10 @@
-
 import { useEffect, useRef } from 'react';
 import { Send, Mail, Phone, MapPin, MessageSquare } from 'lucide-react';
 
 const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const formsRef = useRef<HTMLFormElement | null>(null);
-  const infoRef = useRef<HTMLDivElement | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -23,8 +22,8 @@ const Contact = () => {
       observer.observe(sectionRef.current);
     }
     
-    if (formsRef.current) {
-      observer.observe(formsRef.current);
+    if (formRef.current) {
+      observer.observe(formRef.current);
     }
     
     if (infoRef.current) {
@@ -33,7 +32,7 @@ const Contact = () => {
     
     return () => {
       if (sectionRef.current) observer.unobserve(sectionRef.current);
-      if (formsRef.current) observer.unobserve(formsRef.current);
+      if (formRef.current) observer.unobserve(formRef.current);
       if (infoRef.current) observer.unobserve(infoRef.current);
     };
   }, []);
@@ -56,8 +55,8 @@ const Contact = () => {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <div className="section-fade-in" ref={formsRef}>
-            <form className="glass p-8 rounded-2xl shadow-xl border border-sarura-100">
+          <div className="section-fade-in">
+            <form ref={formRef} className="glass p-8 rounded-2xl shadow-xl border border-sarura-100">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-gray-700">Full Name</label>

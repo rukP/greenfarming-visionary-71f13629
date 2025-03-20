@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { CheckCircle2, Plant, Droplets, TrendingUp, Clock, BarChart3, MessageSquare, LeafyGreen, CloudSun } from 'lucide-react';
+import { CheckCircle2, Sprout, Droplets, TrendingUp, Clock, BarChart3, MessageSquare, LeafyGreen, CloudSun } from 'lucide-react';
 
 const Benefits = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -39,7 +39,7 @@ const Benefits = () => {
   const benefits = [
     {
       text: "Reduce crop loss by up to 40% with early disease detection",
-      icon: Plant
+      icon: Sprout
     },
     {
       text: "Save up to 35% on pesticide costs with targeted application",
