@@ -1,134 +1,74 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+body {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+/* Section animation classes */
+.section-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
 
-    --primary: 142 96% 12%;  /* Sarura Green */
-    --primary-foreground: 0 0% 100%;
+.section-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+/* Glass effect */
+.glass {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+/* Button hover effect */
+.btn-hover {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
 
-    --accent: 142 50% 96%;  /* Light Sarura Green */
-    --accent-foreground: 142 96% 12%;
+.btn-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: all 0.5s ease;
+}
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+.btn-hover:hover::before {
+  left: 100%;
+}
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 142 70% 30%;
-
-    --radius: 0.75rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+/* Custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
   }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 142 70% 40%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 142 40% 20%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 142 70% 40%;
+  50% {
+    transform: translateY(-20px);
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "ss01", "ss02", "cv01", "cv03";
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  /* Section transitions */
-  .section-fade-in {
-    @apply opacity-0 translate-y-6;
-    transition: opacity 1s ease, transform 1s ease;
-  }
-  
-  .section-fade-in.visible {
-    @apply opacity-100 translate-y-0;
-  }
-  
-  /* Glass morphism utility */
-  .glass {
-    @apply bg-white/70 backdrop-blur-lg border border-white/20;
-  }
-
-  .glass-dark {
-    @apply bg-black/40 backdrop-blur-lg border border-white/10;
-  }
-  
-  /* Button hover effects */
-  .btn-hover {
-    @apply relative overflow-hidden transition-all duration-300 ease-out;
-  }
-  
-  .btn-hover::after {
-    @apply absolute top-0 left-0 w-full h-full bg-black/10 opacity-0 transition-opacity duration-300 ease-out content-[''];
-  }
-  
-  .btn-hover:hover::after {
-    @apply opacity-100;
-  }
-  
-  /* Image reveal animation */
-  .img-reveal {
-    clip-path: inset(0 100% 0 0);
-    transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
-  }
-  
-  .img-reveal.visible {
-    clip-path: inset(0 0 0 0);
-  }
-  
-  /* Heading styles */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight;
-  }
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
