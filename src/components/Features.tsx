@@ -1,5 +1,5 @@
 
-import { MonitorSmartphone, Drone, Sprout, BarChart3, Bot } from 'lucide-react';
+import { MonitorSmartphone, Plane, Sprout, BarChart3, Bot } from 'lucide-react';
 import FeatureCard from './FeatureCard';
 
 const Features = () => {
@@ -12,7 +12,7 @@ const Features = () => {
     {
       title: "Drone Monitoring",
       description: "Real-time aerial views of plantations to identify problem areas and optimize farm management.",
-      icon: Drone
+      icon: Plane
     },
     {
       title: "Automatic Spraying",
