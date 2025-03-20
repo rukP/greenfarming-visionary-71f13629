@@ -1,9 +1,10 @@
 
 import { useEffect, useRef } from 'react';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Plant, Droplets, TrendingUp, Clock, BarChart3, MessageSquare, LeafyGreen, CloudSun } from 'lucide-react';
 
 const Benefits = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -21,22 +22,57 @@ const Benefits = () => {
       observer.observe(sectionRef.current);
     }
     
+    itemsRef.current.forEach((item) => {
+      if (item) observer.observe(item);
+    });
+    
     return () => {
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
+      itemsRef.current.forEach((item) => {
+        if (item) observer.unobserve(item);
+      });
     };
   }, []);
 
   const benefits = [
-    "Reduce crop loss by up to 40% with early disease detection",
-    "Save up to 35% on pesticide costs with targeted application",
-    "Increase overall farm yield by 25% through optimized crop management",
-    "Reduce water usage by 30% with precision irrigation insights",
-    "Save 15 hours per week on manual inspection tasks",
-    "Make data-driven decisions with comprehensive farm analytics",
-    "Access expert farming advice through the AI assistant 24/7",
-    "Minimize environmental impact with precise resource application"
+    {
+      text: "Reduce crop loss by up to 40% with early disease detection",
+      icon: Plant
+    },
+    {
+      text: "Save up to 35% on pesticide costs with targeted application",
+      icon: Droplets
+    },
+    {
+      text: "Increase overall farm yield by 25% through optimized crop management",
+      icon: TrendingUp
+    },
+    {
+      text: "Reduce water usage by 30% with precision irrigation insights",
+      icon: Droplets
+    },
+    {
+      text: "Save 15 hours per week on manual inspection tasks",
+      icon: Clock
+    },
+    {
+      text: "Make data-driven decisions with comprehensive farm analytics",
+      icon: BarChart3
+    },
+    {
+      text: "Access expert farming advice through the AI assistant 24/7",
+      icon: MessageSquare
+    },
+    {
+      text: "Minimize environmental impact with precise resource application",
+      icon: LeafyGreen
+    },
+    {
+      text: "Get accurate weather forecasts for better farm planning",
+      icon: CloudSun
+    }
   ];
 
   return (
@@ -49,11 +85,20 @@ const Benefits = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8">
           {benefits.map((benefit, index) => (
-            <div key={index} className="flex items-start space-x-3 section-fade-in">
-              <CheckCircle2 className="h-6 w-6 text-sarura-200 shrink-0 mt-0.5" />
-              <p className="text-lg">{benefit}</p>
+            <div 
+              key={index} 
+              className="flex items-start space-x-4 section-fade-in bg-sarura-600/50 p-4 rounded-lg hover:bg-sarura-600 transition-all duration-300 transform hover:-translate-y-1"
+              ref={el => itemsRef.current[index] = el}
+              style={{ transitionDelay: `${index * 100}ms` }}
+            >
+              <div className="bg-sarura-200 p-2 rounded-lg">
+                <benefit.icon className="h-6 w-6 text-sarura-600 shrink-0" />
+              </div>
+              <div>
+                <p className="text-lg">{benefit.text}</p>
+              </div>
             </div>
           ))}
         </div>

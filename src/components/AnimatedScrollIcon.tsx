@@ -11,7 +11,7 @@ const AnimatedScrollIcon = () => {
 
   return (
     <div 
-      className="fixed bottom-8 right-8 z-50 bg-sarura-500 text-white p-3 rounded-full shadow-lg cursor-pointer opacity-80 hover:opacity-100 transition-opacity animate-bounce-soft"
+      className="fixed bottom-8 right-8 z-50 bg-sarura-500 text-white p-3 rounded-full shadow-lg cursor-pointer opacity-80 hover:opacity-100 transition-all duration-300 transform hover:scale-110 animate-bounce-soft"
       onClick={scrollToNextSection}
       aria-label="Scroll down"
     >

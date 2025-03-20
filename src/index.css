@@ -17,7 +17,7 @@ body {
 .section-fade-in {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 }
 
 .section-fade-in.visible {
@@ -30,6 +30,11 @@ body {
   backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.glass:hover {
+  box-shadow: 0 20px 25px -5px rgba(1, 61, 14, 0.1), 0 10px 10px -5px rgba(1, 61, 14, 0.04);
 }
 
 /* Button hover effect */
@@ -59,6 +64,11 @@ body {
   left: 100%;
 }
 
+.btn-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(1, 61, 14, 0.2), 0 4px 6px -2px rgba(1, 61, 14, 0.05);
+}
+
 /* Custom animations */
 @keyframes float {
   0%, 100% {
@@ -69,6 +79,63 @@ body {
   }
 }
 
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+/* Feature card hover effects */
+.feature-card:hover .feature-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Section transitions */
+.section-transition {
+  transition: all 0.5s ease;
+}
+
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Shimmer effect for buttons */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: rotate(30deg);
+  transition: all 1.5s ease;
+  opacity: 0;
+}
+
+.btn-shimmer:hover::after {
+  transform: rotate(30deg) translate(0, 0);
+  opacity: 1;
 }
