@@ -1,5 +1,7 @@
+
 import { useEffect, useRef } from 'react';
 import { Send, Mail, Phone, MapPin, MessageSquare } from 'lucide-react';
+import { Textarea } from './ui/textarea';
 
 const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -37,6 +39,12 @@ const Contact = () => {
     };
   }, []);
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Here we would handle form submission
+    alert('Thank you for your message! We will get back to you soon.');
+  };
+
   const socialLinks = [
     { name: "Facebook", url: "#" },
     { name: "Twitter", url: "#" },
@@ -56,7 +64,7 @@ const Contact = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div className="section-fade-in">
-            <form ref={formRef} className="glass p-8 rounded-2xl shadow-xl border border-sarura-100">
+            <form ref={formRef} className="glass p-8 rounded-2xl shadow-xl border border-sarura-100" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-gray-700">Full Name</label>
@@ -65,6 +73,7 @@ const Contact = () => {
                     id="name"
                     className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-sarura-500 focus:border-transparent transition-all duration-300"
                     placeholder="Your name"
+                    required
                   />
                 </div>
                 <div className="space-y-2">
@@ -74,6 +83,7 @@ const Contact = () => {
                     id="email"
                     className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-sarura-500 focus:border-transparent transition-all duration-300"
                     placeholder="your@email.com"
+                    required
                   />
                 </div>
               </div>
@@ -85,17 +95,19 @@ const Contact = () => {
                   id="subject"
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-sarura-500 focus:border-transparent transition-all duration-300"
                   placeholder="How can we help?"
+                  required
                 />
               </div>
               
               <div className="space-y-2 mb-6">
                 <label htmlFor="message" className="text-sm font-medium text-gray-700">Message</label>
-                <textarea
+                <Textarea
                   id="message"
                   rows={4}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-sarura-500 focus:border-transparent resize-none transition-all duration-300"
                   placeholder="Tell us more about your inquiry..."
-                ></textarea>
+                  required
+                />
               </div>
               
               <button 

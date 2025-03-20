@@ -76,11 +76,16 @@ const Benefits = () => {
   ];
 
   return (
-    <section id="benefits" className="py-20 bg-sarura-500 text-white" ref={sectionRef}>
+    <section id="benefits" className="py-20 bg-gradient-to-b from-sarura-50 to-white relative" ref={sectionRef}>
+      {/* Background elements */}
+      <div className="absolute inset-0 overflow-hidden -z-10">
+        <div className="absolute top-0 right-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=4928&h=3264&q=80')] opacity-5 bg-cover bg-center"></div>
+      </div>
+      
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16 section-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Sarura</h2>
-          <p className="text-xl opacity-90 max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-sarura-500">Why Choose Sarura</h2>
+          <p className="text-xl opacity-90 max-w-3xl mx-auto text-gray-700">
             Our innovative solution provides substantial benefits that transform agricultural practices.
           </p>
         </div>
@@ -89,15 +94,15 @@ const Benefits = () => {
           {benefits.map((benefit, index) => (
             <div 
               key={index} 
-              className="flex items-start space-x-4 section-fade-in bg-sarura-600/50 p-4 rounded-lg hover:bg-sarura-600 transition-all duration-300 transform hover:-translate-y-1"
+              className="flex items-start space-x-4 section-fade-in bg-white/80 p-6 rounded-lg hover:bg-sarura-50 transition-all duration-300 transform hover:-translate-y-1 shadow-md border border-sarura-100"
               ref={el => itemsRef.current[index] = el}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="bg-sarura-200 p-2 rounded-lg">
+              <div className="bg-sarura-100 p-3 rounded-lg">
                 <benefit.icon className="h-6 w-6 text-sarura-600 shrink-0" />
               </div>
               <div>
-                <p className="text-lg">{benefit.text}</p>
+                <p className="text-lg text-gray-800">{benefit.text}</p>
               </div>
             </div>
           ))}

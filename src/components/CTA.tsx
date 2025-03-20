@@ -103,8 +103,8 @@ const CTA = () => {
                 <div className="relative bg-gray-900 rounded-[2.5rem] p-3 shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
                   <div className="bg-black rounded-[2rem] overflow-hidden aspect-[9/19]">
                     <img 
-                      src="https://images.unsplash.com/photo-1620287340160-947956294169?auto=format&fit=crop&w=800&h=1800&q=80" 
-                      alt="Sarura app on mobile phone" 
+                      src="https://images.unsplash.com/photo-1530759766718-1bca00afe4f0?auto=format&fit=crop&w=800&h=1800&q=80" 
+                      alt="Sarura mobile app showing crop monitoring interface" 
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-sarura-500/90 text-white py-2 px-4 rounded-full text-sm font-medium rotate-[-3deg]">

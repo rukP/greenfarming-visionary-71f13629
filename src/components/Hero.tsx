@@ -79,10 +79,10 @@ const Hero = () => {
               {/* Circular gradient background */}
               <div className="absolute inset-0 bg-gradient-to-tr from-sarura-100 to-sarura-50/20 rounded-full"></div>
               
-              {/* Drone image */}
+              {/* Plantation image with drone */}
               <img
-                src="https://images.unsplash.com/photo-1487887235947-a955ef187fcc?auto=format&fit=crop&w=800&h=800&q=80"
-                alt="Agricultural drone flying above farm"
+                src="https://images.unsplash.com/photo-1620287340160-947956294169?auto=format&fit=crop&w=800&h=800&q=80"
+                alt="Agricultural drone monitoring green plantation fields"
                 className="w-[90%] h-auto object-contain relative z-10 rounded-3xl shadow-2xl animate-float"
               />
               
