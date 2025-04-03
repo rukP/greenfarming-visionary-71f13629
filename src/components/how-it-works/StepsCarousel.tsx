@@ -72,7 +72,7 @@ const StepsCarousel = () => {
           <div className="text-center">
             <div className="flex items-center justify-center mb-2">
               <div className="p-2 bg-sarura-100 rounded-full">
-                <steps[activeIndex].icon className="text-sarura-500 h-6 w-6" />
+                {React.createElement(steps[activeIndex].icon, { className: "text-sarura-500 h-6 w-6" })}
               </div>
             </div>
             <h3 className="font-medium text-sarura-500">
