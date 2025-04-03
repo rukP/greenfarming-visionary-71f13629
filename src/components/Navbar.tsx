@@ -38,8 +38,9 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <a href="#" className="flex items-center space-x-2">
-          <span className="bg-sarura-500 text-white h-8 w-8 rounded-md flex items-center justify-center font-display text-xl">S</span>
-          <span className="text-xl font-display font-bold text-gray-900">Sarura</span>
+          {/* <span className="bg-sarura-500 text-white h-8 w-8 rounded-md flex items-center justify-center font-display text-xl">S</span>
+          <span className="text-xl font-display font-bold text-gray-900">Sarura</span> */}
+          <img src="/logo.png" alt="logo" width={150} height={150} />
         </a>
 
         {/* Desktop Navigation */}

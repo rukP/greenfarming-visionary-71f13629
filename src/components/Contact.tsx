@@ -140,7 +140,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-medium">Call Us</p>
-                      <a href="tel:+250780000000" className="text-gray-600 hover:text-sarura-500 transition-colors">+250 780 000 000</a>
+                      <a href="tel:+250784148374" className="text-gray-600 hover:text-sarura-500 transition-colors">+250 784 148 374</a>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4 group">
@@ -149,7 +149,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-medium">Visit Us</p>
-                      <p className="text-gray-600">Kigali Innovation City, Kigali, Rwanda</p>
+                      <p className="text-gray-600">Kigali, Rwanda</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4 group">
@@ -203,7 +203,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <a 
-                  href="tel:+250780000000"
+                  href="tel:+250784148374"
                   className="btn-hover mt-4 w-full flex items-center justify-center border border-sarura-500 text-sarura-500 px-5 py-3 rounded-lg text-base font-medium hover:bg-sarura-50 transition-all duration-300 transform hover:scale-[1.02]"
                 >
                   Call Support Team

@@ -101,7 +101,7 @@ const HowItWorks = () => {
                       <img 
                         src={step.image} 
                         alt={step.title} 
-                        className="w-full h-[300px] object-cover"
+                        className="w-full h-[300px] object-cover mr-4"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-sarura-500/70 to-transparent">
                         <div className="absolute bottom-4 left-4 right-4 text-white">
@@ -133,10 +133,10 @@ const HowItWorks = () => {
                   <span className="absolute flex items-center justify-center w-8 h-8 bg-sarura-100 rounded-full -left-4 ring-4 ring-white">
                     <step.icon className="w-4 h-4 text-sarura-500" />
                   </span>
-                  <h3 className="flex items-center text-xl font-semibold text-gray-900">
+                  <h3 className="flex items-center text-xl font-semibold text-gray-900 ml-7">
                     {step.title}
                   </h3>
-                  <p className="mt-2 text-gray-600">
+                  <p className="mt-2 text-gray-600 ml-5">
                     {step.description}
                   </p>
                 </li>

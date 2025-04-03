@@ -9,11 +9,10 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-2 mb-6">
               <img 
-                src="/lovable-uploads/e0cbf3b6-7f29-4407-a834-a5a7f5b466ac.png"
+                src="/logo_white.png"
                 alt="Sarura Logo" 
                 className="h-9 w-auto"
               />
-              <span className="text-2xl font-display font-bold">Sarura</span>
             </div>
             <p className="text-gray-400 mb-6">
               Revolutionizing farming with AI-powered solutions for disease detection, real-time monitoring, and automated treatments.

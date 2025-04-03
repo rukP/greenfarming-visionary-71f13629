@@ -76,16 +76,16 @@ const Benefits = () => {
   ];
 
   return (
-    <section id="benefits" className="py-20 bg-gradient-to-b from-sarura-50 to-white relative" ref={sectionRef}>
+    <section id="benefits" className="py-20 bg-black relative" ref={sectionRef}>
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden -z-10">
-        <div className="absolute top-0 right-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=4928&h=3264&q=80')] opacity-5 bg-cover bg-center"></div>
+        <div className="absolute top-0 right-0 w-full h-full bg-[url('https://plus.unsplash.com/premium_photo-1676236297596-59f23505b6bf')] opacity-[50%] bg-cover bg-center"></div>
       </div>
       
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-16 section-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-sarura-500">Why Choose Sarura</h2>
-          <p className="text-xl opacity-90 max-w-3xl mx-auto text-gray-700">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-4xl font-bold mb-4 text-sarura-100">Why Choose Sarura</h2>
+          <p className="text-xl opacity-90 text-white max-w-3xl mx-auto">
             Our innovative solution provides substantial benefits that transform agricultural practices.
           </p>
         </div>
@@ -98,7 +98,7 @@ const Benefits = () => {
               ref={el => itemsRef.current[index] = el}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="bg-sarura-100 p-3 rounded-lg">
+              <div className="bg-sarura-300 p-3 rounded-lg">
                 <benefit.icon className="h-6 w-6 text-sarura-600 shrink-0" />
               </div>
               <div>
