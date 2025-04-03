@@ -50,7 +50,7 @@ const HowItWorks = () => {
             <StepsList />
           </div>
           
-          <div className="section-fade-in relative">
+          <div className="section-fade-in relative bg-white/30 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-sarura-100/30">
             <StepsCarousel />
             <div className="absolute -z-10 w-72 h-72 bg-sarura-100/30 rounded-full blur-3xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
           </div>
