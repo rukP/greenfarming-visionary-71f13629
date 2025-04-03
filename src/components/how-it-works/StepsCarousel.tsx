@@ -5,7 +5,8 @@ import {
   CarouselContent,
   CarouselItem,
   CarouselPrevious,
-  CarouselNext
+  CarouselNext,
+  type CarouselApi
 } from "@/components/ui/carousel";
 import { 
   Card,
@@ -15,10 +16,31 @@ import { steps } from './StepsList';
 
 const StepsCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [api, setApi] = useState<CarouselApi | null>(null);
 
-  const handleSlideChange = useCallback((index: number) => {
-    setActiveIndex(index);
-  }, []);
+  // Set up event handlers when the carousel API is available
+  React.useEffect(() => {
+    if (!api) return;
+
+    const handleSelect = () => {
+      setActiveIndex(api.selectedScrollSnap());
+    };
+
+    // Subscribe to carousel events
+    api.on("select", handleSelect);
+
+    // Clean up event listeners
+    return () => {
+      api.off("select", handleSelect);
+    };
+  }, [api]);
+
+  // Function to directly select a specific slide
+  const handleSlideSelect = useCallback((index: number) => {
+    if (api) {
+      api.scrollTo(index);
+    }
+  }, [api]);
 
   return (
     <div className="space-y-6 px-4">
@@ -27,7 +49,7 @@ const StepsCarousel = () => {
           loop: true,
           align: "center",
         }}
-        onSlideChange={handleSlideChange}
+        setApi={setApi}
       >
         <CarouselContent>
           {steps.map((step, index) => (
@@ -62,7 +84,7 @@ const StepsCarousel = () => {
             className={`h-2 rounded-full cursor-pointer transition-all duration-300 ${
               index === activeIndex ? "w-8 bg-sarura-500" : "w-2 bg-gray-300"
             }`}
-            onClick={() => handleSlideChange(index)}
+            onClick={() => handleSlideSelect(index)}
           />
         ))}
       </div>
