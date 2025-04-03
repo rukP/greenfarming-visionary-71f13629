@@ -1,11 +1,13 @@
 
 import { useEffect, useRef } from 'react';
-import { Send, Mail, Phone, MapPin, MessageSquare } from 'lucide-react';
-import { Textarea } from './ui/textarea';
+import ContactForm from './contact/ContactForm';
+import ContactInfo from './contact/ContactInfo';
+import BusinessHours from './contact/BusinessHours';
+import SupportCard from './contact/SupportCard';
 
 const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const formRef = useRef<HTMLFormElement>(null);
+  const formContainerRef = useRef<HTMLDivElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
@@ -24,8 +26,8 @@ const Contact = () => {
       observer.observe(sectionRef.current);
     }
     
-    if (formRef.current) {
-      observer.observe(formRef.current);
+    if (formContainerRef.current) {
+      observer.observe(formContainerRef.current);
     }
     
     if (infoRef.current) {
@@ -34,16 +36,10 @@ const Contact = () => {
     
     return () => {
       if (sectionRef.current) observer.unobserve(sectionRef.current);
-      if (formRef.current) observer.unobserve(formRef.current);
+      if (formContainerRef.current) observer.unobserve(formContainerRef.current);
       if (infoRef.current) observer.unobserve(infoRef.current);
     };
   }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here we would handle form submission
-    alert('Thank you for your message! We will get back to you soon.');
-  };
 
   const socialLinks = [
     { name: "Facebook", url: "#" },
@@ -63,152 +59,15 @@ const Contact = () => {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <div className="section-fade-in">
-            <form ref={formRef} className="glass p-8 rounded-2xl shadow-xl border border-sarura-100" onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium text-gray-700">Full Name</label>
-                  <input 
-                    type="text"
-                    id="name"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-sarura-500 focus:border-transparent transition-all duration-300"
-                    placeholder="Your name"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium text-gray-700">Email Address</label>
-                  <input 
-                    type="email"
-                    id="email"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-sarura-500 focus:border-transparent transition-all duration-300"
-                    placeholder="your@email.com"
-                    required
-                  />
-                </div>
-              </div>
-              
-              <div className="space-y-2 mb-6">
-                <label htmlFor="subject" className="text-sm font-medium text-gray-700">Subject</label>
-                <input 
-                  type="text"
-                  id="subject"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-sarura-500 focus:border-transparent transition-all duration-300"
-                  placeholder="How can we help?"
-                  required
-                />
-              </div>
-              
-              <div className="space-y-2 mb-6">
-                <label htmlFor="message" className="text-sm font-medium text-gray-700">Message</label>
-                <Textarea
-                  id="message"
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-sarura-500 focus:border-transparent resize-none transition-all duration-300"
-                  placeholder="Tell us more about your inquiry..."
-                  required
-                />
-              </div>
-              
-              <button 
-                type="submit"
-                className="btn-hover w-full flex items-center justify-center bg-sarura-500 text-white px-6 py-3.5 rounded-lg text-base font-medium shadow-lg shadow-sarura-500/20 hover:bg-sarura-600 transition-all duration-300 transform hover:scale-[1.02]"
-              >
-                <Send size={18} className="mr-2" />
-                Send Message
-              </button>
-            </form>
+          <div className="section-fade-in" ref={formContainerRef}>
+            <ContactForm />
           </div>
           
           <div className="section-fade-in" ref={infoRef}>
             <div className="space-y-10">
-              <div>
-                <h3 className="text-xl font-semibold mb-4 text-sarura-500">Contact Information</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-4 group">
-                    <div className="bg-sarura-100 p-2 rounded-lg group-hover:bg-sarura-200 transition-colors duration-300">
-                      <Mail className="w-5 h-5 text-sarura-500" />
-                    </div>
-                    <div>
-                      <p className="font-medium">Email Us</p>
-                      <a href="mailto:info@sarura.app" className="text-gray-600 hover:text-sarura-500 transition-colors">info@sarura.app</a>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4 group">
-                    <div className="bg-sarura-100 p-2 rounded-lg group-hover:bg-sarura-200 transition-colors duration-300">
-                      <Phone className="w-5 h-5 text-sarura-500" />
-                    </div>
-                    <div>
-                      <p className="font-medium">Call Us</p>
-                      <a href="tel:+250784148374" className="text-gray-600 hover:text-sarura-500 transition-colors">+250 784 148 374</a>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4 group">
-                    <div className="bg-sarura-100 p-2 rounded-lg group-hover:bg-sarura-200 transition-colors duration-300">
-                      <MapPin className="w-5 h-5 text-sarura-500" />
-                    </div>
-                    <div>
-                      <p className="font-medium">Visit Us</p>
-                      <p className="text-gray-600">Kigali, Rwanda</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4 group">
-                    <div className="bg-sarura-100 p-2 rounded-lg group-hover:bg-sarura-200 transition-colors duration-300">
-                      <MessageSquare className="w-5 h-5 text-sarura-500" />
-                    </div>
-                    <div>
-                      <p className="font-medium">Social Media</p>
-                      <div className="flex space-x-3 mt-1">
-                        {socialLinks.map((link, index) => (
-                          <a 
-                            key={index} 
-                            href={link.url}
-                            className="text-sarura-500 hover:text-sarura-600 transition-colors text-sm"
-                          >
-                            {link.name}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-semibold mb-4 text-sarura-500">Business Hours</h3>
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Monday - Friday</span>
-                    <span className="font-medium">8:00 AM - 5:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Saturday</span>
-                    <span className="font-medium">9:00 AM - 1:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Sunday</span>
-                    <span className="font-medium">Closed</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="glass p-6 rounded-xl border border-sarura-100 hover:border-sarura-200 transition-colors">
-                <div className="flex items-center space-x-4">
-                  <div className="bg-sarura-100 p-3 rounded-lg">
-                    <Phone className="w-6 h-6 text-sarura-500" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold">Need urgent support?</h4>
-                    <p className="text-sm text-gray-600">Our support team is available 24/7</p>
-                  </div>
-                </div>
-                <a 
-                  href="tel:+250784148374"
-                  className="btn-hover mt-4 w-full flex items-center justify-center border border-sarura-500 text-sarura-500 px-5 py-3 rounded-lg text-base font-medium hover:bg-sarura-50 transition-all duration-300 transform hover:scale-[1.02]"
-                >
-                  Call Support Team
-                </a>
-              </div>
+              <ContactInfo socialLinks={socialLinks} />
+              <BusinessHours />
+              <SupportCard />
             </div>
           </div>
         </div>
